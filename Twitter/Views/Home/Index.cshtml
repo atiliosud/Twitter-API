@@ -1,0 +1,30 @@
+﻿@model IEnumerable<string>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="collapse navbar-collapse">
+        <p class="navbar-text">
+            <strong>
+                Desenvolvedor: Atilio Camargo Moreira.
+            </strong>
+            Aplicação Teste de Consumo da API Twitter.
+        </p>
+        <div class="item">
+            <img src="~/images/twitter.png" alt="Twitter" class="img-responsive" />
+        </div>
+    </div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button id="btnCSV" type="button" class="btn btn-secondary" onclick="javascript: location.href = '/Home/Exportar'";>Exportar para CSV</button>
+</div>
+
+<div class="list-group">
+    @foreach (var item in Model)
+    {
+        <div>
+            @item
+            <hr />
+        </div>
+    }
+</div>
