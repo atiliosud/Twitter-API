@@ -17,17 +17,30 @@ namespace Twitter.Controllers
     public class HomeController : Controller
     {
         private readonly AppSettings _appSettings;
+        public Models.Twitter _twitter{ get; set; }
+        public string _accessToken { get; set; }
+
         public HomeController(IOptions<AppSettings> appSettings)
         {
             _appSettings = appSettings.Value;
+            _twitter = new Models.Twitter(_appSettings);
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            Models.Twitter twitter = new Models.Twitter(_appSettings);
-            IList<string> _twitts = await twitter.GetTwitts("AtilioCMoreira", 10);
+            _accessToken = await _twitter.GetAccessToken();
+            HttpContext.Session.SetString("Token", _accessToken);
+            IList<string> _twitts = await _twitter.GetTwitts(_accessToken);
             HttpContext.Session.SetComplexData("Twitts", _twitts);
+            return View(_twitts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Pesquisar(string parameter)
+        {
+            _accessToken = HttpContext.Session.GetString("Token");
+            IList<string> _twitts = await _twitter.GetFilteredTwitts(parameter);
             return View(_twitts);
         }
 

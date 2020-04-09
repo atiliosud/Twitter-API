@@ -3,20 +3,25 @@
     ViewBag.Title = "Home Page";
 }
 
-    <div class="collapse navbar-collapse">
-        <p class="navbar-text">
-            <strong>
-                Desenvolvedor: Atilio Camargo Moreira.
-            </strong>
-            Aplicação Teste de Consumo da API Twitter.
-        </p>
-        <div class="item">
-            <img src="~/images/twitter.png" alt="Twitter" class="img-responsive" />
-        </div>
+<div class="collapse navbar-collapse">
+    <p class="navbar-text">
+        <strong>
+            Desenvolvedor: Atilio Camargo Moreira.
+        </strong>
+        Aplicação Teste de Consumo da API Twitter.
+    </p>
+    <div class="item">
+        <img src="~/images/twitter.png" alt="Twitter" class="img-responsive" />
     </div>
+</div>
+
+@*<div class="input-group mb-3">
+    <input type="text" id="txtParametro " class="form-control" aria-label="parametros" aria-describedby="basic-addon1" />
+    <button id="btnPesquisar" type="button" class="btn btn-secondary">Pesquisar</button>
+</div>*@
 
 <div class="btn-group" role="group" aria-label="Basic example">
-    <button id="btnCSV" type="button" class="btn btn-secondary" onclick="javascript: location.href = '/Home/Exportar'";>Exportar para CSV</button>
+    <button id="btnCSV" type="button" class="btn btn-secondary" onclick="javascript: location.href = '/Home/Exportar'" ;>Exportar para CSV</button>
 </div>
 
 <div class="list-group">
@@ -28,3 +33,12 @@
         </div>
     }
 </div>
+
+<script type="text/javascript">
+    $('#btnPesquisar').click(function () {
+       var url = '@Url.Action("Index", "Home")';
+       var textValue = $('#txtParametro').val();
+       window.location.href = url + '?parameter=' + textValue;
+    });
+</script>
+

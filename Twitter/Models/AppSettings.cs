@@ -9,5 +9,7 @@ namespace Twitter.Models
     {
         public string OAuthConsumerSecret { get; set; }
         public string OAuthConsumerKey { get; set; }
+        public string UserName { get; set; }
+        public int Count { get; set; }
     }
 }
