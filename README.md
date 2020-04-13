@@ -4,6 +4,7 @@ API Twitter : TEST
 
 Este projeto básico foi feito usando:
 # NET CORE
+# Docker
 # Chamadas assíncronas (Async)
 # Session
 # Jquery (Busca Parametrizada)
